@@ -5,6 +5,27 @@
 #       AUTHOR:  Aliaksandr P. Zahatski, <zahatski@gmail.com>
 #===============================================================================
 #$Id$
+
+=head1 NAME
+
+Collection - Collections framework for  B<CRUD> of the data or objects.
+
+=head1 SYNOPSIS
+
+    package MyCollection;
+    use Collection;
+    @MyCollection::ISA = qw(Collection);
+
+=head1 DESCRIPTION
+
+A collection - sometimes called a container - is simply an object that groups multiple elements into a single unit. I<Collection> are used to store, retrieve, manipulate, and communicate aggregate data.
+
+The primary advantages of a I<Collection> framework are that it reduces programming effort by providing useful data structures and algorithms so you don't have to write them yourself.
+
+
+The I<Collection> framework consists of:
+=cut
+
 package Flow;
 use Flow::Code;
 use Flow::Splice;
@@ -20,7 +41,7 @@ use warnings;
 use Exporter;
 our @ISA    = qw(Exporter);
 our @EXPORT = qw(create_flow);
-
+our $VERSION = 0.1;
 use constant MODS_MAP => {
     Splice  => 'Flow::Splice',
     Join    => 'Flow::Join',
