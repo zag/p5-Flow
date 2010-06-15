@@ -8,14 +8,13 @@
 
 =head1 NAME
 
-Collection - Collections framework for  B<CRUD> of the data or objects.
+Flow - Make data flow processing easy
 
 =head1 SYNOPSIS
 
-    package MyCollection;
-    use Collection;
-    @MyCollection::ISA = qw(Collection);
-
+    use Flow;
+    my $flow = create_flow( Splice=>20, sub{ [ grep { $_ > 1 } @_ ] } )
+    
 =head1 DESCRIPTION
 
 A collection - sometimes called a container - is simply an object that groups multiple elements into a single unit. I<Collection> are used to store, retrieve, manipulate, and communicate aggregate data.
@@ -24,6 +23,7 @@ The primary advantages of a I<Collection> framework are that it reduces programm
 
 
 The I<Collection> framework consists of:
+
 =cut
 
 package Flow;
@@ -207,6 +207,26 @@ sub run {
     $p->flow(@_);
     $p->end();
 }
+
+__END__
+
+=head1 SEE ALSO
+
+
+=head1 AUTHOR
+
+Zahatski Aliaksandr, <zag@cpan.org>
+
+
+=head1 COPYRIGHT AND LICENSE
+
+Copyright (C) 2009-2010 by Zahatski Aliaksandr
+
+This library is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself, either Perl version 5.8.8 or,
+at your option, any later version of Perl 5 you may have available.
+
+=cut
 
 1;
 
