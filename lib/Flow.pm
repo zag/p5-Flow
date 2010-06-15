@@ -207,7 +207,7 @@ sub run {
     $p->flow(@_);
     $p->end();
 }
-
+1;
 __END__
 
 =head1 SEE ALSO
@@ -227,6 +227,4 @@ it under the same terms as Perl itself, either Perl version 5.8.8 or,
 at your option, any later version of Perl 5 you may have available.
 
 =cut
-
-1;
 
