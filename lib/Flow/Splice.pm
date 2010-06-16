@@ -5,6 +5,18 @@
 #       AUTHOR:  Aliaksandr P. Zahatski, <zahatski@gmail.com>
 #===============================================================================
 #$Id$
+=head1 NAME
+
+Flow::Splice - Stream breakdown on a parts
+
+=head1 SYNOPSIS
+
+    my $f1 = Flow::create_flow(
+        Splice => 200 );
+    $f1->run( 1, 3, 11 );
+
+=cut
+
 package Flow::Splice;
 use warnings;
 use strict;
@@ -59,4 +71,24 @@ sub end {
 }
 
 1;
+
+__END__
+
+=head1 SEE ALSO
+
+Flow
+
+=head1 AUTHOR
+
+Zahatski Aliaksandr, <zag@cpan.org>
+
+=head1 COPYRIGHT AND LICENSE
+
+Copyright (C) 2010 by Zahatski Aliaksandr
+
+This library is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself, either Perl version 5.8.8 or,
+at your option, any later version of Perl 5 you may have available.
+
+=cut
 

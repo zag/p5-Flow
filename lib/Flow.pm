@@ -1,6 +1,6 @@
 #===============================================================================
 #
-#  DESCRIPTION:
+#  DESCRIPTION: Flow - Make data flow processing easy
 #
 #       AUTHOR:  Aliaksandr P. Zahatski, <zahatski@gmail.com>
 #===============================================================================
@@ -14,15 +14,22 @@ Flow - Make data flow processing easy
 
     use Flow;
     my $flow = create_flow( Splice=>20, sub{ [ grep { $_ > 1 } @_ ] } )
+
+    my $c1 = new Flow::Code:: {
+    flow => sub { my $self = shift; $self->{count_}++ for @_; return},
+    end => sub {
+          my $self = shift;
+          $self->put_flow( $self->{count_} );
+          [@_]
+    }
+    };
+    create_flow( $c1, new Flow::To::XML::(\$str) );
+    $c1->run(1..1000);
+
     
 =head1 DESCRIPTION
 
-A collection - sometimes called a container - is simply an object that groups multiple elements into a single unit. I<Collection> are used to store, retrieve, manipulate, and communicate aggregate data.
-
-The primary advantages of a I<Collection> framework are that it reduces programming effort by providing useful data structures and algorithms so you don't have to write them yourself.
-
-
-The I<Collection> framework consists of:
+Flow - a set of modules for data flow processing.
 
 =cut
 
@@ -101,9 +108,11 @@ sub import {
     }
 }
 
-=head1 create_flow "MyFlow::Pack"=>{param1=>$val},$my_flow_object, "MyFlow::Pack1"=>12, "MyFlow::Pack3"=>{}
+=head1 FUNCTIONS
 
-use last arg as handler for out.
+=head2 create_flow "MyFlow::Pack"=>{param1=>$val},$my_flow_object, "MyFlow::Pack1"=>12, "MyFlow::Pack3"=>{}
+
+Use last arg as handler for out.
 
 return flow object ref.
 
@@ -152,9 +161,14 @@ sub create_flow {
     return $next_handler;
 }
 
+=head2 split_flow $flow
+
+Return array of handlers
+
+=cut
+
 sub split_flow {
     my $obj = shift;
-    use Data::Dumper;
     if ( @_ > 1 ) {
         return split_flow($_) for @_;
     }
@@ -164,7 +178,9 @@ sub split_flow {
     }
     @res;
 }
+=head1 METHODS
 
+=cut
 sub new {
     my $class = shift;
     $class = ref($class) || $class;
@@ -217,10 +233,9 @@ __END__
 
 Zahatski Aliaksandr, <zag@cpan.org>
 
-
 =head1 COPYRIGHT AND LICENSE
 
-Copyright (C) 2009-2010 by Zahatski Aliaksandr
+Copyright (C) 2010 by Zahatski Aliaksandr
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself, either Perl version 5.8.8 or,

@@ -5,6 +5,40 @@
 #       AUTHOR:  Aliaksandr P. Zahatski, <zahatski@gmail.com>
 #===============================================================================
 #$Id$
+=head1 NAME
+
+Flow::To::JXML - serialize flow to JSON+XML
+
+=head1 SYNOPSIS
+
+    my ( $s, $s1 );
+    my $f1 = Flow::create_flow(
+        Splice => 200,
+        Join   => {
+            Data => Flow::create_flow(
+                sub {
+                    return [ grep { $_ > 10 } @_ ];
+                },
+                Splice => 10
+
+            ),
+            Min => Flow::create_flow(
+                sub {
+                    return [ grep { $_ == 1 } @_ ];
+                },
+                Splice => 40,
+            )
+        },
+        ToJXML  => \$s,
+    );
+    $f1->run( 1, 3, 11 );
+    
+=head1 DESCRIPTION
+
+Flow::To::JXML - serialize flow to JSON+XML
+
+=cut
+
 package Flow::To::JXML;
 use strict;
 use warnings;
@@ -32,6 +66,23 @@ sub ctl_flow {
 }
 
 1;
+__END__
 
+=head1 SEE ALSO
 
+Flow::To::XML
+
+=head1 AUTHOR
+
+Zahatski Aliaksandr, <zag@cpan.org>
+
+=head1 COPYRIGHT AND LICENSE
+
+Copyright (C) 2010 by Zahatski Aliaksandr
+
+This library is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself, either Perl version 5.8.8 or,
+at your option, any later version of Perl 5 you may have available.
+
+=cut
 

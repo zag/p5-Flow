@@ -5,6 +5,28 @@
 #       AUTHOR:  Aliaksandr P. Zahatski, <zahatski@gmail.com>
 #===============================================================================
 #$Id$
+=head1 NAME
+
+Flow::Split -Send flow to multiple processor, with switching 
+
+=head1 SYNOPSIS
+
+    use Flow;
+    my $fi = create_flow(
+    FromXML => \$in,
+    Split => { Data1 => $fi1, Data2 => $fi2 },
+    Splice=>10,
+    ToXML => \$out
+    );
+    $fi->run();
+    
+=head1 DESCRIPTION
+
+
+Flow::Split  is a object that passes each flow it receives on to a list of downstream handlers.
+
+=cut
+
 package Flow::Split;
 use strict;
 use warnings;
@@ -100,5 +122,24 @@ sub ctl_flow {
 }
 
 1;
+__END__
+
+=head1 SEE ALSO
+
+Flow::Join
+
+=head1 AUTHOR
+
+Zahatski Aliaksandr, <zag@cpan.org>
+
+=head1 COPYRIGHT AND LICENSE
+
+Copyright (C) 2010 by Zahatski Aliaksandr
+
+This library is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself, either Perl version 5.8.8 or,
+at your option, any later version of Perl 5 you may have available.
+
+=cut
 
 

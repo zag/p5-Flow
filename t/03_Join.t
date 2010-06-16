@@ -326,7 +326,6 @@ use_ok('Flow::Splice');
         Join   => {
             Data => Flow::create_flow(
                 sub {
-                    shift;
                     return [ grep { $_ > 10 } @_ ];
                 },
                 Splice => 10
@@ -334,7 +333,6 @@ use_ok('Flow::Splice');
             ),
             Min => Flow::create_flow(
                 sub {
-                    shift;
                     return [ grep { $_ == 1 } @_ ];
                 },
                 Splice => 40,
