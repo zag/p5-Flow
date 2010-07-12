@@ -38,6 +38,7 @@ use Flow::Code;
 use Flow::Splice;
 use Flow::To::XML;
 use Flow::To::JXML;
+use Flow::From::JXML;
 use Flow::From::XML;
 use Flow::Join;
 use Flow::Split;
@@ -48,7 +49,7 @@ use warnings;
 use Exporter;
 our @ISA    = qw(Exporter);
 our @EXPORT = qw(create_flow);
-our $VERSION = 0.1;
+our $VERSION = 0.2;
 use constant MODS_MAP => {
     Splice  => 'Flow::Splice',
     Join    => 'Flow::Join',
@@ -56,7 +57,8 @@ use constant MODS_MAP => {
     Code    => 'Flow::Code',
     FromXML => 'Flow::From::XML',
     Split   => 'Flow::Split',
-    ToJXML  => 'Flow::To::JXML'
+    ToJXML  => 'Flow::To::JXML',
+    FromJXML => 'Flow::From::JXML'
 };
 
 our %tmp_map = %{ (MODS_MAP) };

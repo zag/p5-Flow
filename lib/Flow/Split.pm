@@ -30,6 +30,7 @@ Flow::Split  is a object that passes each flow it receives on to a list of downs
 package Flow::Split;
 use strict;
 use warnings;
+use Flow::To::Null;
 use base 'Flow';
 
 sub new {
@@ -91,7 +92,7 @@ sub ctl_flow {
     my $self = shift;
     foreach my $rec ( @_ ) {
         #check if  switch pipe
-        if ( (ref($rec) eq 'HASH') && ( my $type= $rec->{type} )) {
+        if ( (ref($rec) eq 'HASH') && ( my $type= $rec->{type} ) ) {
                if ( $type eq  'named_pipes' ) {
                     my $stage  = $rec->{stage};
                     my $name = $rec->{name};

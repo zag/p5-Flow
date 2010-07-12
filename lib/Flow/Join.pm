@@ -33,7 +33,24 @@ Flow::Join - Assemble multiple flows streams in to one
         ToXML  => \$s,
     );
     $f1->run( 1, 3, 11 );
-    
+
+
+    Join   => [
+            Data => Flow::create_flow(
+                sub {
+                    return [ grep { $_ > 10 } @_ ];
+                },
+                Splice => 10
+
+            ),
+            Min => Flow::create_flow(
+                sub {
+                    return [ grep { $_ == 1 } @_ ];
+                },
+                Splice => 40,
+            )
+        ],
+
 =head1 DESCRIPTION
 
 Flow::Join - Assemble multiple flows streams in to one
@@ -87,7 +104,9 @@ sub new {
     my @order = ();
     # Flow::Join:: { Data=>$dsd, Test=>$sdsd}
     if ($#_ == 0 ) {
-        @_ = %{ shift @_ } ;
+        my $args = shift @_;
+        @_ = ref( $args) eq 'ARRAY' ?  @{ $args } : %{ $args} ;
+
     }
     while ( my ( $name, $value ) = splice @_, 0, 2 ) {
         push @order,

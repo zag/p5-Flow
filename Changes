@@ -1,4 +1,7 @@
 Revision history for Perl extension Flow.
 
-0.01  14.06.2010 11:21:37 MSD
+0.02   12.07.2010 
+  - add import from JXML format;
+  - enhance Join
+ 0.01  14.06.2010 11:21:37 MSD
  - initial version
