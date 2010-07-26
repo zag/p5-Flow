@@ -5,8 +5,8 @@ Module::Build->new
     dist_version_from=>'lib/Flow.pm',
     license => 'perl',
     prereq =>{
-	JSON=>0,
-	XML::Flow=>0,
+	JSON=>2.21,
+	XML::Flow=>0.85,
     },
     dist_author=>'Zahatski Aliaksandr zag@cpan.org',
     create_makefile_pl=>$ENV{DO_OUTCPAN} ? 'traditional':'passthrough'

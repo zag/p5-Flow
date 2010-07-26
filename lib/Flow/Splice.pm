@@ -5,6 +5,7 @@
 #       AUTHOR:  Aliaksandr P. Zahatski, <zahatski@gmail.com>
 #===============================================================================
 #$Id$
+
 =head1 NAME
 
 Flow::Splice - Stream breakdown on a parts
@@ -37,17 +38,18 @@ sub new {
 sub purge_stack {
     my $self  = shift;
     my $stack = $self->{stack};
+    my $res;
     if ( scalar(@$stack) ) {
-        $self->put_flow(@$stack);
+        $res    = $self->put_flow(@$stack);
         @$stack = ();
     }
-
+    $res    #return put_flow res
 }
 
 sub ctl_flow {
-    my $self = shift;
-    $self->purge_stack();
-    return $self->SUPER::ctl_flow(@_);
+    my $self  = shift;
+    my $state = $self->purge_stack();
+    return $state || $self->SUPER::ctl_flow(@_);
 }
 
 sub flow {
@@ -56,7 +58,7 @@ sub flow {
     my $count = $self->{_Splice};
     foreach (@_) {
         if ( @$stack >= $count ) {
-            $self->purge_stack();
+            if ( my $status = $self->purge_stack() ) { return $status }
         }
         push @$stack, $_;
     }
@@ -66,7 +68,7 @@ sub flow {
 sub end {
     my $self  = shift;
     my $stack = $self->{stack};
-    $self->purge_stack();
+    if ( my $status = $self->purge_stack() ) { return $status }
     return \@_;
 }
 
