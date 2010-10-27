@@ -56,11 +56,11 @@ sub flow {
     my $self  = shift;
     my $stack = $self->{stack};
     my $count = $self->{_Splice};
-    foreach (@_) {
+    foreach my $r (@_) {
         if ( @$stack >= $count ) {
             if ( my $status = $self->purge_stack() ) { return $status }
         }
-        push @$stack, $_;
+        push @$stack, $r;
     }
     return undef;
 }
