@@ -85,6 +85,7 @@ sub current_pipe {
 
 sub flow {
     my $self = shift;
+#    warn Dumper(\@_);
     return $self->current_pipe->parser->flow(@_);
 }
 
@@ -93,7 +94,10 @@ sub ctl_flow {
     foreach my $rec ( @_ ) {
         #check if  switch pipe
         if ( (ref($rec) eq 'HASH') && ( my $type= $rec->{type} ) ) {
-               if ( $type eq  'named_pipes' ) {
+              #check if "name" exists in HASH
+              my %hash = ();
+              @hash{map {$_->{name}} @{ $self->{flows} } } = ();
+              if ( $type eq  'named_pipes' and exists $hash{$rec->{name}}) {
                     my $stage  = $rec->{stage};
                     my $name = $rec->{name};
                     if ( $stage == 2 ||$stage == 4 ) {

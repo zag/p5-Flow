@@ -49,7 +49,7 @@ use warnings;
 use Exporter;
 our @ISA    = qw(Exporter);
 our @EXPORT = qw(create_flow);
-our $VERSION = 0.4;
+our $VERSION = 0.5;
 use constant MODS_MAP => {
     Splice  => 'Flow::Splice',
     Join    => 'Flow::Join',
