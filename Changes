@@ -1,6 +1,9 @@
 Revision history for Perl extension Flow.
 
-0.05  20 Dec, 2010
+0.6 13 Feb, 2011
+   - add Grep 
+
+0.5  20 Dec, 2010
     - fix named pipes at Split 
 
 0.04   27 Oct, 2010
