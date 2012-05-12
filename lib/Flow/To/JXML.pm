@@ -49,7 +49,7 @@ sub flow {
     my $self = shift;
     my $xfl  = $self->{_xml_flow};
     $xfl->startTag("flow");
-    $xfl->_get_writer->cdata(encode_json(\@_));
+    $xfl->_get_writer->cdata(JSON->new->utf8->pretty(1)->encode(\@_));
     $xfl->endTag("flow");
     return $self->Flow::flow(@_)
 
