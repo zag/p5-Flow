@@ -40,9 +40,15 @@ sub begin {
     $self->put_begin(@_);
     my $xfl  = $self->{_xml_flow};
     my %tags = (
-        flow => sub { shift; $self->put_flow( @{ decode_json( shift @_ ) } ) },
+        flow => sub { shift;
+        #clear UTF-X bit
+        utf8::encode($_[0]) if utf8::is_utf8($_[0]);
+        $self->put_flow( @{ decode_json( shift @_ ) } ) },
         ctl_flow =>
-          sub { shift; $self->put_ctl_flow( @{ decode_json( shift @_ ) } ) }
+          sub { shift; 
+          #clear UTF-X bit
+          utf8::encode($_[0]) if utf8::is_utf8($_[0]);
+          $self->put_ctl_flow( @{ decode_json( shift @_ ) } ) }
     );
     $xfl->read( \%tags );
     $xfl->close;

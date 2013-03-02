@@ -1,5 +1,7 @@
 Revision history for Perl extension Flow.
 
+0.9 02 Mar, 2013
+   - clear UTF-X bit 
 0.8 12 May, 2012
    - make pretty json
 0.6 13 Feb, 2011
