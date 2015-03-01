@@ -4,7 +4,6 @@
 #
 #       AUTHOR:  Aliaksandr P. Zahatski, <zahatski@gmail.com>
 #===============================================================================
-#$Id$
 package Flow::Test;
 use strict;
 use warnings;
@@ -13,6 +12,8 @@ use Data::Dumper;
 require Exporter;
 our @ISA = qw(Exporter);
 our @EXPORT = qw(is_deeply_xml);
+our $VERSION = '0.1';
+
 
 
 sub xml_ref {

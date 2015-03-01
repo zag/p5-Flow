@@ -4,7 +4,6 @@
 #
 #       AUTHOR:  Aliaksandr P. Zahatski, <zahatski@gmail.com>
 #===============================================================================
-#$Id$
 =head1 NAME
 
 Flow::Code - process flow by user defined code
@@ -38,6 +37,7 @@ package Flow::Code;
 use strict;
 use warnings;
 use base 'Flow';
+our $VERSION = '0.1';
 
 =head2  new 
 

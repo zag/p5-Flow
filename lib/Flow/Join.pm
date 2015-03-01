@@ -4,7 +4,6 @@
 #
 #       AUTHOR:  Aliaksandr P. Zahatski, <zahatski@gmail.com>
 #===============================================================================
-#$Id$
 =head1 NAME
 
 Flow::Join - Assemble multiple flows streams in to one
@@ -61,6 +60,8 @@ package Flow::NamedPipesPack;
 use strict;
 use warnings;
 use base 'Flow';
+our $VERSION = '0.1';
+
 
 sub begin {
     return;
@@ -98,6 +99,7 @@ use warnings;
 use Data::Dumper;
 use Flow;
 use base 'Flow';
+our $VERSION = '0.1';
 
 sub new {
     my $self  = shift->SUPER::new();

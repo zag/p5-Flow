@@ -4,7 +4,6 @@
 #
 #       AUTHOR:  Aliaksandr P. Zahatski, <zahatski@gmail.com>
 #===============================================================================
-#$Id$
 =head1 NAME
 
 Flow::Split -Send flow to multiple processor, with switching 
@@ -32,6 +31,8 @@ use strict;
 use warnings;
 use Flow::To::Null;
 use base 'Flow';
+our $VERSION = '0.1';
+
 
 sub new {
     my $self  = shift->SUPER::new();

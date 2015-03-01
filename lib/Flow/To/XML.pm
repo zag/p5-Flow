@@ -4,7 +4,6 @@
 #
 #       AUTHOR:  Aliaksandr P. Zahatski, <zahatski@gmail.com>
 #===============================================================================
-#$Id$
 =head1 NAME
 
 Flow::To::XML - serialize flow to XML
@@ -45,6 +44,8 @@ use warnings;
 use Flow;
 use base 'Flow';
 use XML::Flow qw( ref2xml xml2ref);
+our $VERSION = '0.1';
+
 
 =head2 new  dst
     

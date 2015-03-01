@@ -4,7 +4,6 @@
 #
 #       AUTHOR:  Aliaksandr P. Zahatski, <zahatski@gmail.com>
 #===============================================================================
-#$Id$
 
 =head1 NAME
 
@@ -24,6 +23,8 @@ use strict;
 use Data::Dumper;
 use Flow;
 use base 'Flow';
+our $VERSION = '0.1';
+
 
 sub new {
     my $class = shift;

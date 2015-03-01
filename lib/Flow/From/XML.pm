@@ -4,13 +4,13 @@
 #
 #       AUTHOR:  Aliaksandr P. Zahatski, <zahatski@gmail.com>
 #===============================================================================
-#$Id$
 package Flow::From::XML;
 use Flow;
 use base 'Flow';
 use XML::Flow;
 use strict;
 use warnings;
+our $VERSION = '0.1';
 
 =head2 new  src
     

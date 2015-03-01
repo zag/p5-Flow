@@ -4,7 +4,6 @@
 #
 #       AUTHOR:  Aliaksandr P. Zahatski, <zahatski@gmail.com>
 #===============================================================================
-#$Id$
 
 =head1 NAME
 
@@ -34,6 +33,7 @@ use JSON;
 use Flow::To::XML;
 use Data::Dumper;
 use base 'Flow::From::XML';
+our $VERSION = '0.1';
 
 sub begin {
     our $self = shift;

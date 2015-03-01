@@ -2,7 +2,6 @@
 #
 #       AUTHOR:  Aliaksandr P. Zahatski, <zahatski@gmail.com>
 #===============================================================================
-#$Id$
 =head1 NAME
 
 Flow::Grep - Evaluates the EXPR for each element of flow
@@ -21,6 +20,8 @@ use strict;
 use Data::Dumper;
 use Flow;
 use base 'Flow';
+our $VERSION = '0.1';
+
 
 sub new {
     my $class = shift;

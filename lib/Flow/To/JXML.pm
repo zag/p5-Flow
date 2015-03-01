@@ -4,7 +4,6 @@
 #
 #       AUTHOR:  Aliaksandr P. Zahatski, <zahatski@gmail.com>
 #===============================================================================
-#$Id$
 =head1 NAME
 
 Flow::To::JXML - serialize flow to JSON+XML
@@ -45,6 +44,7 @@ use warnings;
 use JSON;
 use Flow::To::XML;
 use base 'Flow::To::XML';
+our $VERSION = '0.1';
 sub flow {
     my $self = shift;
     my $xfl  = $self->{_xml_flow};
