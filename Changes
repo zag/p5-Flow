@@ -1,5 +1,6 @@
 Revision history for Perl extension Flow.
-
+1.0 01 Mar, 2015
+  - fix random order of pipes
 0.9 02 Mar, 2013
    - clear UTF-X bit 
 0.8 12 May, 2012

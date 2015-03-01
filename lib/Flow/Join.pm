@@ -105,7 +105,16 @@ sub new {
     # Flow::Join:: { Data=>$dsd, Test=>$sdsd}
     if ($#_ == 0 ) {
         my $args = shift @_;
-        @_ = ref( $args) eq 'ARRAY' ?  @{ $args } : %{ $args} ;
+#        @_ = ref( $args) eq 'ARRAY' ?  @{ $args } : %{ $args} ;
+        if (ref( $args) eq 'ARRAY') {
+            @_ = @{ $args };
+        } else {
+            @_ = ();
+            foreach my $k ( reverse sort keys %{ $args} ) {
+                push @_, $k, $args->{$k}
+            }
+
+        }
 
     }
     while ( my ( $name, $value ) = splice @_, 0, 2 ) {
@@ -193,7 +202,7 @@ Zahatski Aliaksandr, <zag@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright (C) 2010 by Zahatski Aliaksandr
+Copyright (C) 2015 by Zahatski Aliaksandr
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself, either Perl version 5.8.8 or,
