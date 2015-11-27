@@ -41,10 +41,10 @@ Flow::To::JXML - serialize flow to JSON+XML
 package Flow::To::JXML;
 use strict;
 use warnings;
-use JSON;
+use JSON::XS;
 use Flow::To::XML;
 use base 'Flow::To::XML';
-our $VERSION = '0.1';
+our $VERSION = '0.2';
 sub flow {
     my $self = shift;
     my $xfl  = $self->{_xml_flow};
@@ -59,7 +59,7 @@ sub ctl_flow {
     my $self = shift;
     my $xfl  = $self->{_xml_flow};
     $xfl->startTag("ctl_flow");
-    $xfl->_get_writer->cdata(encode_json(\@_));
+    $xfl->_get_writer->cdata(JSON->new->utf8->pretty(1)->encode(\@_));
     $xfl->endTag("ctl_flow");
     return $self->Flow::ctl_flow(@_)
 

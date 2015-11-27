@@ -5,7 +5,7 @@ Module::Build->new
     dist_version_from=>'lib/Flow.pm',
     license => 'perl',
     prereq =>{
-	JSON=>2.21,
+	JSON::XS=>2.34,
 	XML::Flow=>0.85,
     },
     dist_author=>'Zahatski Aliaksandr zag@cpan.org',

@@ -1,4 +1,6 @@
 Revision history for Perl extension Flow.
+1.02 27 Nov, 2015
+  - use JSON::XS
 1.0 01 Mar, 2015
   - fix random order of pipes
 0.9 02 Mar, 2013
